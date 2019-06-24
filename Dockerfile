@@ -4,8 +4,8 @@ WORKDIR /var/app
 
 COPY src .
 
-ADD https://github.com/szazo/DHT11_Python.git sensors/
+RUN git clone https://github.com/szazo/DHT11_Python.git
 
-RUN pip install -r src/requirements.txt
+#RUN pip install -r src/requirements.txt
 
-CMD [python3 /var/app/main.py]
+CMD ["python /var/app/main.py"]
