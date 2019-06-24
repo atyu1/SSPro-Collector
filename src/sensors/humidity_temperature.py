@@ -24,7 +24,7 @@ class humidity_sensor:
     def get_data(self):
         """ Get results in dictionary """
         data = {"humidity":self._raw_data.humidity}
-	return data
+        return data
 
     def print_text(self):
         """ Print the results for local testing """
@@ -59,7 +59,7 @@ class temperature_sensor:
     def get_data(self):
         """ Get results in dictionary """
         data = {"temperature":self._raw_data.temperature} 
-	return data
+        return data
 
     def print_text(self):
         """ Print the results for local testing """
