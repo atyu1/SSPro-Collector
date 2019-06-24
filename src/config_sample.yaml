@@ -1,0 +1,21 @@
+###############################
+# 
+# General part
+#
+# ############################
+
+url: "https://localhost/test"
+
+###############################
+#
+# Sensors
+#
+# Parts where you can enable disable specific sensors
+# Possible options:
+#  - humidity - read the DHT11 humidity sensors content
+#  - temperature - read the DHT11 temperature sensor
+###############################
+
+sensors:
+    - humidity
+    - temperature
