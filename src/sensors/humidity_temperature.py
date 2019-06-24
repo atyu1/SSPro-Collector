@@ -2,7 +2,11 @@ import RPi.GPIO as GPIO
 from DHT11_Python import dht11
 import json
 
-class humidity_sensor:
+class dht11_sensor:
+	"""TODO: """
+	pass 
+
+class humidity_sensor(dht11_sensor):
     """
     Class for direct work with sensor and get raw data from DHT11 sensor
     """
@@ -37,7 +41,7 @@ class humidity_sensor:
         """ Main run file to run this module """
         return self.get_data()
 
-class temperature_sensor:
+class temperature_sensor(dht11_sensor):
     """
     Class for direct work with sensor and get raw data from DHT11 sensor
     """
