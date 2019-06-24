@@ -20,5 +20,5 @@ class ConfigReader:
             except yaml.YAMLError as exc:
                 print("Change me to log: ERROR: %s" % (exc,))
 
-       self.url = self._yaml_content.url
-       self.sensors = self._yaml_content.sensors 
+        self.url = self._yaml_content["url"]
+        self.sensors = self._yaml_content["sensors"]
