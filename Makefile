@@ -12,14 +12,14 @@ help:
 	@echo "push   - git push commits to git"
 	@echo "test-local - test localy the code"
 
-install: deploy build-container 
+install: deploy build 
 
 deploy:
 	@echo "Copying files"
 	scp -r ./* atyu@$(IP):/tmp
 
 #Create a docker container
-build-container:
+build:
 	ssh atyu@$(IP) $(DOCKERBUILDCMD) -t atyu1/ssp-collector -f /tmp/Dockerfile .
 #Run a container
 run:
