@@ -20,7 +20,7 @@ deploy:
 
 #Create a docker container
 build-container:
-	ssh atyu@$(IP) $(DOCKERBUILDCMD) -f /tmp/Dockerfile .
+	ssh atyu@$(IP) $(DOCKERBUILDCMD) -t atyu1/ssp-collector -f /tmp/Dockerfile .
 #Run a container
 run:
 	@echo "Not implemented" 
