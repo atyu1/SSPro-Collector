@@ -10,4 +10,4 @@ WORKDIR /var/app
 
 RUN git clone https://github.com/szazo/DHT11_Python.git
 
-CMD ["python /var/app/main.py"]
+CMD ["python", "./main.py"]
