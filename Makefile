@@ -12,20 +12,18 @@ help:
 	@echo "push   - git push commits to git"
 	@echo "test-local - test localy the code"
 
-install: build-linux build-container 
+install: deploy build-container 
 
-#Build go package for linux platform
-build-linux:
-	@echo "Not implemented" 
+deploy:
+	@echo "Copying files"
+	scp -r ./* atyu@$(IP):/tmp
 
 #Create a docker container
 build-container:
-	@echo "Not implemented" 
-
+	ssh atyu@$(IP) $(DOCKERBUILDCMD) -f /tmp/Dockerfile .
 #Run a container
 run:
 	@echo "Not implemented" 
-#ToDo: Add deploy 
 
 #Clean binaries + conatiners
 clean:
