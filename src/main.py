@@ -1,4 +1,3 @@
-# TODO
 # main file
 from sensors.humidity_temperature import humidity_sensor as HUMIDITY
 from sensors.humidity_temperature import temperature_sensor as TEMPERATURE
@@ -12,6 +11,7 @@ sensors = sensor_modularize(config_content)
 
 for sensor in sensors:
     data.append(sensor.run())
+
 print (data)
 sender = JsonSender("https://localhost/test")
 sender.push()
