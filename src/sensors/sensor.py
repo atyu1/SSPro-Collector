@@ -23,25 +23,32 @@ class DHT11_Sensor(Sensor):
         GPIO.setmode(GPIO.BCM)
         GPIO.cleanup()
 
-        self.reader = dht11.DHT11(pin=pin)
-        self.raw_data = self.reader.read()
         self.key_name = key_name
 
+    def _dht11_reader(self):
+        self.reader = dht11.DHT11(pin=pin)
+        self.raw_data = self.reader.read()
+ 
     def __str__(self):
         """ Print the results for local testing """
-        data = "%v: %d\n" % (self.key_name, self.raw_data.data)
+        if not self.sensor_data: # Data collected only after run() fucntion called
+            return ""
 
-        print (data) 
+        return str(self.sensor_data)
 
     def get_data(self):
         """ Get results in dictionary """
-        if self.key_name == "humidity":
-            data = {keyname:self.raw_data.humidity}
-        elif self.key_name == "temperature":
-            data = {keyname:self.raw_data.temperature}
+        if not self.raw_data.is_valid():
+            raise SensorError("Data from DHT11 is not valid")
 
-        return data
+        if self.key_name == "humidity":
+            self.sensor_data = {keyname:self.raw_data.humidity}
+        elif self.key_name == "temperature":
+            self.sensor_data = {keyname:self.raw_data.temperature}
+
+        return self.sensor_data
 
     def run(self):
         """ Main run file to run this module """
+        self._dth11_reader()
         return self.get_data()
