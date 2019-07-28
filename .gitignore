@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Ignore DHT11, downloaded during docker build
+DHT11_Python/
+
