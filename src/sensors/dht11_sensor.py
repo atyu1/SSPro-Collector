@@ -32,9 +32,9 @@ class DHT11_Sensor(Sensor):
             raise SensorError("Data from DHT11 is not valid")
 
         if self.key_name == "humidity":
-            self.sensor_data = {keyname:self.raw_data.humidity}
+            self.sensor_data = {self.key_name:self.raw_data.humidity}
         elif self.key_name == "temperature":
-            self.sensor_data = {keyname:self.raw_data.temperature}
+            self.sensor_data = {self.key_name:self.raw_data.temperature}
 
         return self.sensor_data
 
