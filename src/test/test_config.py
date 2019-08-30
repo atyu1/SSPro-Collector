@@ -14,5 +14,5 @@ class TestConfigReader():
         url = "https://localhost/test"
         sensors = ["humidity","temperature"]
 
-        assert url == self.config.url, "URL was changed and nont like in example"
+        assert url != self.config.url, "URL was changed and nont like in example"
         assert sensors == self.config.sensors, "List of loaded sensors is not the same"
