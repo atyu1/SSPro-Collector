@@ -108,4 +108,4 @@ DHT11_Python/
 
 # Tmp swp files created by vim
 .*.swp
-*.yaml
+.yaml
