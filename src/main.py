@@ -4,18 +4,6 @@ from sensors.humidity_temperature import temperature_sensor as TEMPERATURE
 from sender import JsonSender
 from config import ConfigReader
 
-config_content = ConfigReader()
-
-data = []
-sensors = sensor_modularize(config_content)
-
-for sensor in sensors:
-    data.append(sensor.run())
-
-print (data)
-sender = JsonSender("https://localhost/test")
-sender.push()
-
 def sensor_modularize(config):
     """ Create a list of modules based on config file enabled sensors """
    
@@ -28,3 +16,19 @@ def sensor_modularize(config):
         tmp_sensors.append(TEMPERATURE())
 
     return tmp_sensors
+
+def main():
+    config_content = ConfigReader()
+
+    data = []
+    sensors = sensor_modularize(config_content)
+
+    for sensor in sensors:
+        data.append(sensor.run())
+
+    print (data)
+    sender = JsonSender("https://localhost/test")
+    sender.push()
+
+if __name__ == "__main__":
+	main()
