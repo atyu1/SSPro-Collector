@@ -21,6 +21,6 @@ class ConfigReader:
                 print("Change me to log: ERROR: %s" % (exc,))
 
         self.url = self._yaml_content["url"]
-	self.tokenuser = self._yaml_content["tokenuser"]
-	self.tokenpass = self._yaml_content["tokenpass"]
+        self.tokenuser = self._yaml_content["tokenuser"]
+        self.tokenpass = self._yaml_content["tokenpass"]
         self.sensors = self._yaml_content["sensors"]

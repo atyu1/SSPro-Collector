@@ -8,8 +8,8 @@
 # ############################
 
 url: "https://localhost/test"
-tokenuser: "changeme"
-tokenpass: "changeme"
+tokenuser: "test"
+tokenpass: "test"
 
 ###############################
 #
