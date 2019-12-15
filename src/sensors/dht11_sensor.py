@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 import DHT11_Python.dht11 as dht11
 from sensors.sensor import Sensor
-
+from sensors.sensor import SensorError
 
 class DHT11_Sensor(Sensor):
     """
@@ -17,6 +17,7 @@ class DHT11_Sensor(Sensor):
 
         self.pin = pin
         self.key_name = key_name
+        self.retries = 3
 
     def _dht11_reader(self):
         self.reader = dht11.DHT11(pin=self.pin)
@@ -31,8 +32,8 @@ class DHT11_Sensor(Sensor):
 
     def get_data(self):
         """ Get results in dictionary """
-        if not self.raw_data.is_valid():
-            raise SensorError("Data from DHT11 is not valid")
+        while not self._validate_data():
+            continue
 
         if self.key_name == "humidity":
             self.sensor_data = {self.key_name:self.raw_data.humidity}
@@ -45,3 +46,13 @@ class DHT11_Sensor(Sensor):
         """ Main run file to run this module """
         self._dht11_reader()
         return self.get_data()
+
+    def _validate_data(self):
+        if self.raw_data.is_valid():
+            return True
+        elif self.retries > 0:
+            self.raw_data = self.reader.read()
+            self.retries-= 1
+            return False  # This we still need to validate
+        else:
+            raise SensorError("Data from DHT11 is not valid")
