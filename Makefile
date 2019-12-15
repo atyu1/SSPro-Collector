@@ -5,7 +5,7 @@ DOCKERNAME=atyu/sspro-collector
 GOMAINFILE=main
 NAME=collector
 REMOTE="atyu@$(IP)"
-SSHREMOTE="ssh $(REMOTE)"
+SSHREMOTE=ssh $(REMOTE)
 SCPREMOTE="$(REMOTE):~/"
 
 # ------- MAIN SECTION ---------
@@ -35,4 +35,3 @@ clean:
 
 push:
 	git push -u origin master
-
