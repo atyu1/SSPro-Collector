@@ -4,7 +4,7 @@ DOCKERRUNCMD=docker run
 DOCKERNAME=atyu/sspro-collector
 GOMAINFILE=main
 NAME=collector
-REMOTE="atyu@$(IP)"
+REMOTE=atyu@$(IP)
 SSHREMOTE=ssh $(REMOTE)
 SCPREMOTE="$(REMOTE):~/"
 
@@ -25,7 +25,7 @@ build:
 
 run:
 	@echo "Starting the container with name: $(NAME)"
-	$(DOCKERRUNCMD) --rm -it --name $(NAME)
+	$(SSHREMOTE) "$(DOCKERRUNCMD) -d --name $(NAME) $(DOCKERNAME)"
 
 clean:
 	@echo "Clean containers on $(IP)" 
