@@ -26,9 +26,11 @@ def main():
     for sensor in sensors:
         data.append(sensor.run())
 
+
     print (data)
-    sender = JsonSender("https://localhost/test")
-    sender.push()
+    sender = JsonSender("https://localhost", data)
+    sender.login(config_content.tokenuser, config_content.tokenpass)
+    sender.push(data)
 
 if __name__ == "__main__":
 	main()

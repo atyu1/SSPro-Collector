@@ -6,22 +6,24 @@ class JsonSender:
     Class used to send send data via JSON to API server
     """
 
-    def __init__(self, url, data, user="", password="", secure=False):
+    def __init__(self, url, user="", password="", secure=False):
         """ Basic initiator """
-        self.ipaddr = ipaddr
-        self.port = port
+        self.url = url
         self.user = user
         self.password = password
 
-        self.data = self._fix_data(data)
-
-    def _fix_data(self, data):
+    def _validate_datapoints(self, data):
         """ Review the collected data and check if all fields are present"""
         # Todo: Add data pre-checks
 
         return data
 
-    def push(self):
-        """ Push data to server """
+    def push(self, data):
+        """ Push datapoints to server """
+        safe_data = _validate_datapoints(data)
+        r = requests.post(self.url+"/datapoints", data=self.data)
 
-        r = requests.post(self.url, data=self.data)
+    def get_token(self, token_user, token_pass):
+        """ Get new token for data processing """
+        r = requests.post(self.url+"/login", json={"email":token_user, "password":token_pass})
+        print r
