@@ -1,6 +1,6 @@
 
 import RPi.GPIO as GPIO
-import DHT11_Python.dht11
+import DHT11_Python.dht11 as dht11
 from sensors.sensor import Sensor
 
 
