@@ -35,5 +35,5 @@ clean:
 	@echo "Clean home dir on $(IP)"
 	$(SSHREMOTE) "rm -rf ~/*"
 
-push:
+p push:
 	git push -u origin master
