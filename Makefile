@@ -21,7 +21,7 @@ deploy:
 
 #Create a docker container on remote place
 build:
-	ssh $(SSHREMOTE) $(DOCKERBUILDCMD) -t $(DOCKERNAME) -f Dockerfile .
+	$(SSHREMOTE) $(DOCKERBUILDCMD) -t $(DOCKERNAME) -f Dockerfile .
 
 run:
 	@echo "Starting the container with name: $(NAME)"
