@@ -15,10 +15,11 @@ class DHT11_Sensor(Sensor):
         GPIO.setmode(GPIO.BCM)
         GPIO.cleanup()
 
+        self.pin = pin
         self.key_name = key_name
 
     def _dht11_reader(self):
-        self.reader = dht11.DHT11(pin=pin)
+        self.reader = dht11.DHT11(pin=self.pin)
         self.raw_data = self.reader.read()
  
     def __str__(self):
