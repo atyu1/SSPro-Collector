@@ -19,7 +19,7 @@ install: deploy build run
 
 deploy:
 	@echo "Copying files to $(IP)"
-	scp -r ./* atyu@$(IP)
+	scp -r ./src/* atyu@$(IP)
 
 #Create a docker container on remote place
 build:
