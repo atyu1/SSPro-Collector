@@ -42,5 +42,5 @@ class DHT11_Sensor(Sensor):
 
     def run(self):
         """ Main run file to run this module """
-        self._dth11_reader()
+        self._dht11_reader()
         return self.get_data()
