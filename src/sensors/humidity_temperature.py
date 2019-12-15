@@ -1,4 +1,4 @@
-from sensor import DHT11_Sensor
+from sensors import DHT11_Sensor
 
 class HumiditySensor(DHT11_Sensor):
     """
