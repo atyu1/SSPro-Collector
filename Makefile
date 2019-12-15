@@ -3,6 +3,7 @@ DOCKERBUILDCMD=docker build
 DOCKERRUNCMD=docker run
 DOCKERNAME=atyu/sspro-collector
 GOMAINFILE=main
+NAME=collector
 
 # ------- MAIN SECTION ---------
 help:
@@ -12,23 +13,27 @@ help:
 	@echo "push   - git push commits to git"
 	@echo "test-local - test localy the code"
 
-install: deploy build 
+all: install
+
+install: deploy build run 
 
 deploy:
-	@echo "Copying files"
+	@echo "Copying files to $(IP)"
 	scp -r ./* atyu@$(IP):/tmp
 
-#Create a docker container
+#Create a docker container on remote place
 build:
 	ssh atyu@$(IP) $(DOCKERBUILDCMD) -t atyu1/ssp-collector -f Dockerfile .
-#Run a container
-run:
-	@echo "Not implemented" 
 
-#Clean binaries + conatiners
+run:
+	@echo "Starting the container with name: $(NAME)"
+	$(DOCKERRUNCMD) --rm -it --name $(NAME)
+
 clean:
-	@echo "Not implemented" 
-	docker system prune -f
+	@echo "Clean containers on $(IP)" 
+	ssh atyu@$(IP) "docker system prune -f"
+	@echo "Clean home dir on $(IP)"
+	ssh atyu@$(IP) "rm -rf ~/*"
 
 push:
 	git push -u origin master
