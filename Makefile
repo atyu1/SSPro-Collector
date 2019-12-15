@@ -26,6 +26,8 @@ build:
 run:
 	@echo "Starting the container with name: $(NAME)"
 	$(SSHREMOTE) "$(DOCKERRUNCMD) -d --name $(NAME) $(DOCKERNAME)"
+	$(SSHREMOTE) "docker logs $(NAME)"
+	$(SSHREMOTE) "docker rm -f $(NAME)"
 
 clean:
 	@echo "Clean containers on $(IP)" 
