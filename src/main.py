@@ -1,6 +1,6 @@
 # main file
-from sensors.humidity_temperature import humidity_sensor as HUMIDITY
-from sensors.humidity_temperature import temperature_sensor as TEMPERATURE
+from sensors.humidity_temperature import HumiditySensor as HUMIDITY
+from sensors.humidity_temperature import TemperatureSensor as TEMPERATURE
 from sender import JsonSender
 from config import ConfigReader
 

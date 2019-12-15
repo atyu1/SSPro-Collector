@@ -26,4 +26,4 @@ class JsonSender:
     def get_token(self, token_user, token_pass):
         """ Get new token for data processing """
         r = requests.post(self.url+"/login", json={"email":token_user, "password":token_pass})
-        print r
+        print(r)

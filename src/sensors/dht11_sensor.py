@@ -1,5 +1,7 @@
 
-from src.sensors.sensor import Sensor
+import RPi.GPIO as GPIO
+import dht11
+from sensors.sensor import Sensor
 
 
 class DHT11_Sensor(Sensor):
